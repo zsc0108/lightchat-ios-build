@@ -1,0 +1,43 @@
+name: Build LightChat iOS (SwiftUI + Dynamic Island + StoreKit 2)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build & Package iOS IPA
+    runs-on: macos-latest
+
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 使用 XcodeGen 生成标准 Xcode 工程并编译
+        run: |
+          cd lightchat-ios
+          brew install xcodegen || true
+          xcodegen generate
+          xcodebuild -project LightChat.xcodeproj \
+                     -scheme LightChat \
+                     -sdk iphoneos \
+                     -configuration Release \
+                     CODE_SIGN_IDENTITY="" \
+                     CODE_SIGNING_REQUIRED=NO \
+                     CODE_SIGNING_ALLOWED=NO \
+                     SYMROOT=$PWD/build \
+                     clean build
+
+      - name: 封装生成可直接侧载安装的 LightChat.ipa
+        run: |
+          cd lightchat-ios
+          mkdir -p Payload
+          cp -r build/Release-iphoneos/LightChat.app Payload/
+          zip -r LightChat-iOS-v2.4.0.ipa Payload
+
+      - name: 上传 IPA 构建产物供下载真机安装
+        uses: actions/upload-artifact@v4
+        with:
+          name: LightChat-iOS-IPA
+          path: lightchat-ios/LightChat-iOS-v2.4.0.ipa

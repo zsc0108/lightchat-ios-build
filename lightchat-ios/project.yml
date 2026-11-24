@@ -1,0 +1,23 @@
+name: LightChat
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "16.2"
+targets:
+  LightChat:
+    type: application
+    platform: iOS
+    sources:
+      - path: .
+        excludes:
+          - "project.yml"
+    info:
+      path: Resources/Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.lightchat
+        MARKETING_VERSION: "2.4.0"
+        CURRENT_PROJECT_VERSION: "2408"
+        SWIFT_VERSION: "5.9"
+        TARGETED_DEVICE_FAMILY: "1"
+        INFOPLIST_FILE: Resources/Info.plist

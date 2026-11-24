@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>zh_CN</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.example.lightchat</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>轻语</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>2.4.0</string>
+    <key>CFBundleVersion</key>
+    <string>2408</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    
+    <!-- 开启苹果灵动岛 (Dynamic Island) 与实时活动支持 -->
+    <key>NSSupportsLiveActivities</key>
+    <true/>
+    <key>NSSupportsLiveActivitiesFrequentUpdates</key>
+    <true/>
+    
+    <!-- 麦克风录音权限声明 (符合 Apple Guideline 5.1.1 规范) -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>轻语需要使用您的麦克风，以便您录制心事轻语声轨及发送私聊语音条。</string>
+    
+    <!-- 相册权限声明 -->
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>轻语需要访问您的相册，以便您挑选并发送心事配图或更换旅人头像。</string>
+    
+    <!-- 允许连接京东云生产网关 HTTP 接口 -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+    
+    <key>UILaunchScreen</key>
+    <dict/>
+    
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+</dict>
+</plist>
